@@ -1,33 +1,39 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\Categorie;
 
 
 class ServiceController extends Controller
 {
-    public function index(){
-        $services = Service::all();
-        return view('services.index', ['services' => $services]);
+    public function index()
+    {
+        $services = Service::orderBy('datePublication', 'desc')->get();
+        $categories = Categorie::all();
+    
+        return view('services.index', ['services' => $services, 'categories' => $categories]);
     }
+    
 
-    public function create(){
-        return view('services.create');
-    }
+    // public function create(){
+    //     $categories = Categorie::all();
+    //     return view('services.index', ['categories' => $categories]);
+    // }
+    
 
     public function store(Request $request){
         $data = $request->validate([
             'titre' => ['required', 'min:3'],
             'description' => ['required', 'min:10'],
-            'datePublication' => ['required', 'date'],
             'prix' => ['required', 'numeric'],
             'email' => ['required', 'email'],
             'tel' => ['required', 'numeric'],
             'categorie_id' => ['required', 'numeric'],
         ]);
-        
+        $data['datePublication'] = Carbon::now();
         Service::create($data);
         return redirect(route('service.index'));
     }
