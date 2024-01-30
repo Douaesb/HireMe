@@ -8,7 +8,7 @@
                     <img src="../../img/logo.svg" class="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
                     Landwind    
                 </a>
-                <span class="block text-sm text-center text-gray-500 dark:text-gray-400">© 2021-2022 Landwind™. All Rights Reserved.
+                <span class="block text-sm text-center text-gray-500 dark:text-gray-400">© 2021-2022 Landwind™. All Rights Reserved. Made with ♡.
                 </span>
                 <ul class="flex justify-center mt-5 space-x-5">
                     <li>

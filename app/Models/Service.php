@@ -18,4 +18,9 @@ class Service extends Model
         'tel',
         'categorie_id'
     ];
+
+    public function category()
+{
+    return $this->belongsTo(Categorie::class, 'categorie_id');
+}
 }
