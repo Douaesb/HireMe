@@ -21,7 +21,7 @@ class CategorieController extends Controller
         $data = $request->validate([
             'nomCat'  => ['required', 'min:3']
         ]);
-        $newCategorie = Categorie::create($data);
+        Categorie::create($data);
         return redirect(route('categorie.index'));
     }
 
